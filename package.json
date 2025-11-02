@@ -1,6 +1,7 @@
 {
   "type": "module",
   "scripts": {
+	"build": "echo 'Running buildpack preparation'",
     "start": "node server.js"
   },
   "dependencies": {
