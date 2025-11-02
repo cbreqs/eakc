@@ -1,10 +1,9 @@
 import express from 'express';
-import admin from 'firebase-admin/app';
-import { initializeApp, firestore } from 'firebase-admin';
-import { firestore } from 'firebase-admin/firestore';
+import { initializeApp } from 'firebase-admin/app';
+import { getFirestore } from 'firebase-admin/firestore';
 
 initializeApp(); 
-const db = firestore();
+const db = getfirestore();
 
 // --- START THE WEB SERVER ---
 const app = express();
