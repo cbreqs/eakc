@@ -1,8 +1,6 @@
 import express from 'express';
 import * as admin from 'firebase-admin';
 
-// Initialize the Firebase Admin SDK
-// This uses the service account credentials automatically provided by Cloud Run.
 admin.initializeApp();
 const db = admin.firestore();
 
@@ -11,15 +9,11 @@ const app = express();
 const port = parseInt(process.env.PORT) || 8080; 
 const host = '0.0.0.0'; 
 
-// Middleware to read data from POST requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files (your HTML, CSS, and client.js) from the 'public' folder.
-// You must create this 'public' folder next!
 app.use(express.static('public'));
 
-// Define the root route. Cloud Run health check hits here first.
 app.get('/', (req, res) => {
   // If the server is running, send a simple response.
   res.send('Server is active and checking for static files.'); 
@@ -27,8 +21,21 @@ app.get('/', (req, res) => {
 
 // A placeholder route for your form submission logic.
 app.post('/submit-entry', async (req, res) => {
-    // You will put your form data processing and Firestore logic here later.
-    res.status(200).send('Form route hit successfully!'); 
+    // SECURITY NOTE: This is where you would validate and process req.body securely.
+    const formData = req.body; 
+    
+    try {
+        await db.collection("raffleEntries").add({ 
+            // Only save fields you expect, like:
+            email: formData.email, 
+            raffleChoice: formData.raffleChoice,
+            submissionTime: admin.firestore.FieldValue.serverTimestamp()
+        });
+        res.status(200).json({ message: 'Success! Entry submitted to Firestore.' });
+    } catch (e) {
+        console.error("Firestore Write Error:", e);
+        res.status(500).json({ message: `Server error during submission: ${e.message}` });
+    } 
 });
 
 // The CRITICAL command: Start listening for HTTP traffic.
