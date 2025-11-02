@@ -1,8 +1,10 @@
 import express from 'express';
-import * as admin from 'firebase-admin';
+import admin from 'firebase-admin/app';
+import { initializeApp, firestore } from 'firebase-admin';
+import { firestore } from 'firebase-admin/firestore';
 
-admin.initializeApp();
-const db = admin.firestore();
+initializeApp(); 
+const db = firestore();
 
 // --- START THE WEB SERVER ---
 const app = express();
@@ -11,7 +13,6 @@ const host = '0.0.0.0';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
