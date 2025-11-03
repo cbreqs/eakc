@@ -7,8 +7,7 @@ const db = getfirestore();
 
 // --- START THE WEB SERVER ---
 const app = express();
-const port = parseInt(process.env.PORT) || 8080; 
-const host = '0.0.0.0'; 
+const port = (process.env.PORT); 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,6 +38,6 @@ app.post('/submit-entry', async (req, res) => {
 });
 
 // The CRITICAL command: Start listening for HTTP traffic.
-app.listen(port, host, () => {
+app.listen(port, () => {
   console.log(`[SUCCESS] Cloud Run server successfully listening on ${host}:${port}`);
 });
