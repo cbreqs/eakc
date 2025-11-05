@@ -1,6 +1,6 @@
-import express from 'express';
-import { initializeApp } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
+const express = require('express');
+const { initializeApp } = require('firebase-admin/app');
+const { getFirestore } = require('firebase-admin/firestore');
 
 initializeApp(); 
 const db = getfirestore();
