@@ -3,7 +3,7 @@ const { initializeApp } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
 
 initializeApp(); 
-const db = getfirestore();
+const db = getFirestore();
 
 // --- START THE WEB SERVER ---
 const app = express();
@@ -15,7 +15,7 @@ app.use(express.static('public'));
 
 // The CRITICAL command: Start listening for HTTP traffic.
 app.listen(port, () => {
-  console.log(`[SUCCESS] Cloud Run server successfully listening on ${host}:${port}`);
+  console.log(`[SUCCESS] Cloud Run server successfully listening on ${port}`);
 });
 app.get('/', (req, res) => {
   
