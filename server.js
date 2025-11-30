@@ -7,7 +7,8 @@ const db = getFirestore();
 
 // --- START THE WEB SERVER ---
 const app = express();
-const port = (process.env.PORT); 
+// FIX: Use the PORT environment variable if available, otherwise default to 8081
+const port = process.env.PORT || 8081; 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -15,12 +16,13 @@ app.use(express.static('public'));
 
 // The CRITICAL command: Start listening for HTTP traffic.
 app.listen(port, () => {
-  console.log(`[SUCCESS] Cloud Run server successfully listening on ${port}`);
+  // The log message will now show the correct port
+  console.log(`[SUCCESS] Server is listening on port ${port}`);
 });
+
 app.get('/', (req, res) => {
-  
-  // If the server is running, send a simple response.
-  res.send('Server is active and checking for static files.'); 
+  // This just sends the index.html file from the 'public' folder.
+  res.sendFile(__dirname + '/public/index.html');
 });
 
 // A placeholder route for your form submission logic.
