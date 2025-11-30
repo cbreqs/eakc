@@ -5,29 +5,37 @@
     padding: 0;
 }
 
+/* Color Variables for easy management */
+:root {
+    --deep-forest-green: #1E3F2E;
+    --sophisticated-charcoal: #2B3E4A;
+    --warm-golden-amber: #DAA520;
+    --lush-cannabis-green: #5CB85C;
+    --clean-off-white: #F4F4F4;
+    --pristine-white: #FFFFFF;
+}
+
 body {
-    font-family: 'Lato', sans-serif; /* Body Text */
-    color: #F4F4F4; /* Clean Off-White */
-    background-color: #1E3F2E; /* Deep Forest Green */
+    font-family: 'Open Sans', sans-serif; /* Body Text */
+    font-size: 17px;
+    color: var(--clean-off-white); 
+    background-color: var(--deep-forest-green); 
     line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif; /* Headings */
-    color: #DAA520; /* Warm Golden Amber for contrast */
+    font-family: 'Roboto Slab', serif; /* Headings */
+    font-weight: 700; /* Bold */
+    color: var(--warm-golden-amber); /* Warm Golden Amber for contrast */
     margin-bottom: 0.5em;
 }
 
-/* Color Variables for easy management */
-:root {
-    --deep-forest-green: #1E3F2E;
-    --sophisticated-charcoal: #47513d;
-    --lush-cannabis-green: #5CB85C;
-    --warm-golden-amber: #DAA520;
-    --clean-off-white: #F4F4F4;
-    --soft-dark-grey: #4A4A4A;
-    --pristine-white: #FFFFFF;
-}
+h1 { font-size: 54px; }
+
+h2 { font-size: 38px; }
+
+h3 { font-size: 26px; }
+
 
 /* Header Styles */
 header {
@@ -57,14 +65,14 @@ header {
 }
 
 .brand-name {
-    font-family: 'Montserrat', sans-serif; /* Or your specific logo font */
+    font-family: 'Roboto Slab', serif; /* Or your specific logo font */
     font-weight: 900;
     font-size: 1.2rem;
     color: var(--pristine-white);
 }
 
 .brand-subtitle {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 0.9rem;
     color: var(--clean-off-white);
 }
@@ -80,20 +88,21 @@ header nav a:hover {
     color: var(--lush-cannabis-green);
 }
 
-.cta-button {
+.cta-button, .submit-button {
     background-color: var(--warm-golden-amber);
     color: var(--deep-forest-green);
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: 700;
+    font-size: 17px;
     cursor: pointer;
     margin-left: 20px;
     transition: background-color 0.3s ease;
 }
 
-.cta-button:hover {
+.cta-button:hover, .submit-button:hover {
     background-color: #c9931b; /* Example darker amber */
 }
 
@@ -117,6 +126,9 @@ header nav a:hover {
     height: 100%;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    outline: 5px dashed red; /* TEMPORARY VISUAL GUIDE */
+    outline-offset: -5px; /* Puts the outline inside the box */
 }
 
 @keyframes carousel-slide {
@@ -314,22 +326,7 @@ header nav a:hover {
 }
 
 .submit-button {
-    width: 100%;
-    background-color: var(--warm-golden-amber);
-    color: var(--deep-forest-green);
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
     margin-top: 1.5rem;
-}
-
-.submit-button:hover {
-    background-color: #c9931b;
 }
 
 .form-message {
