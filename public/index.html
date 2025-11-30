@@ -8,43 +8,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="path/to/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <img src="/assets/elevated-adventures-logo.png" alt="Elevated Adventures KC Logo" class="brand-logo"   >
-            <span class="brand-name">Elevated Adventures!</span>
+            <img src="/assets/elevated-adventures-logo.png" alt="Elevated Adventures KC Logo" class="brand-logo">
+            <div class="brand-text">
+                <span class="brand-name">ELEVATED Adventures</span>
+                <span class="brand-subtitle">your guide to a Higher Perspective</span>
+            </div>
         </div>
         <nav>
             <a href="#tours">Tours</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
+            <a href="https://weedcommaplease.com" target="_blank">Education</a>
+            <a href="mailto:hello@elevatedadventureskc.com">Contact</a>
             <button class="cta-button">Book a Tour</button>
         </nav>
     </header>
 
     <main>
         <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h1>Elevated Adventures: Premier Cannabis Tourism in Kansas City</h1>
-                <p>Discover curated tours, educational experiences, and the best of KC's cannabis culture.</p>
-                <div class="hero-ctas">
-                    <button class="button primary-button">Explore Tours & Experiences</button>
-                    <button class="button secondary-button">Learn About Cannabis</button>
-                </div>
-            </div>
-            <div class="hero-graphic">
-                <img src="path/to/your/hero-graphic.svg" alt="KC Elevated Graphic">
-                <h3>Elevate KC Experience!</h3>
-                <p>Connect, Learn, Discover</p>
-                <a href="#upcoming-events" class="view-events-link">View Upcoming Events &rarr;</a>
+            <div class="hero-carousel">
+                <div class="hero-slide" style="background-image: url('/assets/elevated-adventures.png');"></div>
+                <div class="hero-slide" style="background-image: url('/assets/bus.png');"></div>
+                <div class="hero-slide" style="background-image: url('/assets/elevated-adventures-logo.png');"></div>
             </div>
         </section>
 
+        <section id="tours">
+            </section>
+
         <section id="signup-form-section" class="signup-form-section">
             <div class="form-card">
-                <h2>Elevate Your KC Experience: Join & Win!</h2>
+                <h2>elevate your KC experience: join our mailing list!</h2>
                 <p>Become part of the Elevated Adventures community! Get exclusive tour insights, cannabis education, and enter our raffle for unique KC experiences.</p>
 
                 <form id="raffle-signup-form">
@@ -71,27 +68,8 @@
                         <label for="age-21-check">I certify that I am 21 years of age or older.</label>
                     </div>
 
-                    <div class="form-group raffle-choices">
-                        <p>Which KC Elevated Adventure excites you most?</p>
-                        <div class="radio-group">
-                            <input type="radio" id="tour1" name="raffleChoice" value="Cannabis & Culinary Tour" required>
-                            <label for="tour1">Cannabis & Culinary Tour</label>
-                        </div>
-                        <div class="radio-group">
-                            <input type="radio" id="tour2" name="raffleChoice" value="KC History & Hemp Walk">
-                            <label for="tour2">KC History & Hemp Walk</label>
-                        </div>
-                        <div class="radio-group">
-                            <input type="radio" id="tour3" name="raffleChoice" value="Dispensary Deep Dive & Tasting">
-                            <label for="tour3">Dispensary Deep Dive & Tasting</label>
-                        </div>
-                        <div class="radio-group">
-                            <input type="radio" id="tour4" name="raffleChoice" value="Any Elevated Adventure" checked>
-                            <label for="tour4">Any Elevated Adventure</label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="button submit-button">Join & Elevate My Experience!</button>
+                    
+                    <button type="submit" class="button submit-button">Join Our Community!</button>
                     <div id="form-message" class="form-message"></div>
                 </form>
 
@@ -99,7 +77,7 @@
                     <h3>Join Our Community!</h3>
                     <div class="social-icons">
                         <a href="https://instagram.com/ElevatedAdventuresKC" target="_blank">
-                        <img src="/assets/" alt="Instagram" class="social-icon">
+                        <img src="/assets/instagram-gold.png" alt="Instagram" class="social-icon">
                         </a>
                         <a href="https://facebook.com/ElevatedAdventuresKC" target="_blank">
                         <img src="/assets/facebook-gold.png" alt="Facebook" class="social-icon">
@@ -111,7 +89,6 @@
             <div class="legal-links">
                 <a href="#privacy">Privacy Policy</a>
                 <a href="#terms">Terms & Conditions</a>
-                <a href="#raffle-rules">Raffle Rules</a>
                 <a href="#disclaimer">Cannabis Disclaimer</a>
             </div>
         </section>
@@ -124,6 +101,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     
-    <script src="script.js"></script>
+    <script src="client.js"></script>
 </body>
 </html>
