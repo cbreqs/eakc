@@ -127,8 +127,6 @@ header nav a:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    outline: 5px dashed red; /* TEMPORARY VISUAL GUIDE */
-    outline-offset: -5px; /* Puts the outline inside the box */
 }
 
 @keyframes carousel-slide {
