@@ -1,4 +1,4 @@
-dconst express = require('express');
+const express = require('express');
 const { initializeApp } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
 
