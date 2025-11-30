@@ -59,3 +59,50 @@ if (raffleForm) { // Ensure the form exists before trying to add listener
 } else {
     console.error("Raffle signup form not found!");
 }
+
+// Tour data
+const tours = [
+    {
+        name: 'Tasting Table Experience',
+        description: 'Explore the heart of KC’s cannabis scene. Visit a premier dispensary, enjoy a guided tour, and learn about the history of cannabis in Missouri.',
+        image: '/assets/bus.png',
+        price: '$50 per person'
+    },
+    {
+        name: 'The Timeless Tour',
+        description: 'Experience the magic of Kansas City’s holiday lights with a festive twist. A cozy and cheerful way to see the city’s best decorations.',
+        image: '/assets/holiday-lights.png',
+        price: '$45 per person'
+    },
+    {
+        name: 'Hops & Hemp Experience',
+        description: 'Your adventure, your way. We offer customizable private tours for groups of any size. Perfect for parties, corporate events, or a unique day out.',
+        image: '/assets/elevated-adventures.png',
+        price: 'Contact for pricing'
+    }
+];
+
+// Function to create and display tour cards
+function displayTours() {
+    const tourContainer = document.querySelector('.tour-container');
+    if (tourContainer) {
+        tours.forEach(tour => {
+            const tourCard = document.createElement('div');
+            tourCard.classList.add('tour-card');
+
+            tourCard.innerHTML = `
+                <img src="${tour.image}" alt="${tour.name}" class="tour-image">
+                <div class="tour-details">
+                    <h3>${tour.name}</h3>
+                    <p>${tour.description}</p>
+                    <p><strong>${tour.price}</strong></p>
+                    <button class="cta-button">Book Now</button>
+                </div>
+            `;
+            tourContainer.appendChild(tourCard);
+        });
+    }
+}
+
+// Display tours on page load
+document.addEventListener('DOMContentLoaded', displayTours);

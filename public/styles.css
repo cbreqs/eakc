@@ -134,6 +134,55 @@ header nav a:hover {
     }
 }
 
+/* Tours Section */
+#tours {
+    padding: 4rem 5%;
+    background-color: var(--sophisticated-charcoal);
+}
+
+#tours h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.tour-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.tour-card {
+    background-color: var(--deep-forest-green);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.tour-card:hover {
+    transform: translateY(-10px);
+}
+
+.tour-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.tour-details {
+    padding: 1.5rem;
+}
+
+.tour-details h3 {
+    color: var(--warm-golden-amber);
+    margin-bottom: 0.5rem;
+}
+
+.tour-details p {
+    color: var(--clean-off-white);
+    margin-bottom: 1rem;
+}
+
 
 /* Signup Form Section */
 .signup-form-section {
