@@ -1,0 +1,14 @@
+type User @table {
+  email: String!
+  createdAt: Timestamp!
+  firstName: String
+  lastName: String
+  lastLogin: Timestamp
+}
+
+type NewsletterSubscription @table {
+  email: String!
+  subscribedAt: Timestamp!
+  source: String
+  user: User
+}

@@ -1,9 +1,11 @@
 {
   "scripts": {
-	"build": "echo 'Running buildpack preparation'",
+    "build": "echo 'Running buildpack preparation'",
     "start": "node server.js"
   },
   "dependencies": {
+    "@dataconnect/admin-generated": "file:src/dataconnect-admin-generated",
+    "@dataconnect/generated": "file:src/dataconnect-generated",
     "express": "^4.19.2",
     "firebase": "^12.5.0",
     "firebase-admin": "^13.5.0"
