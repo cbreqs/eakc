@@ -116,9 +116,9 @@ header nav a:hover {
 
 .hero-carousel {
     display: flex;
-    width: 300%; /* 3 images */
+    width: 400%; /* 4 images */
     height: 100%;
-    animation: carousel-slide 15s infinite;
+    animation: carousel-slide 20s infinite; /* Increased duration for 4 slides */
 }
 
 .hero-slide {
@@ -133,11 +133,14 @@ header nav a:hover {
     0%, 20% {
         transform: translateX(0%);
     }
-    33.33%, 53.33% {
-        transform: translateX(-33.333%);
+    25%, 45% {
+        transform: translateX(-25%);
     }
-    66.66%, 86.66% {
-        transform: translateX(-66.666%);
+    50%, 70% {
+        transform: translateX(-50%);
+    }
+    75%, 95% {
+        transform: translateX(-75%);
     }
     100% {
         transform: translateX(0%);
