@@ -189,6 +189,11 @@ header nav a:hover {
     cursor: pointer;
 }
 
+#prev-month-btn:disabled, #next-month-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 #month-year-display {
     color: var(--pristine-white);
 }
@@ -239,8 +244,14 @@ header nav a:hover {
     transition: opacity 0.3s ease;
 }
 
-.event:hover {
+.event:hover:not(.booked) {
     opacity: 0.8;
+}
+
+.event.booked {
+    text-decoration: line-through;
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
 .event.C-and-C { background-color: var(--calendar-event-c-and-c); }

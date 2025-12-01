@@ -32,20 +32,36 @@ function initializeRaffleForm() {
 }
 
 function initializeCarousel() {
-    // The carousel is handled by CSS animations, so no extra JS is needed for the basic functionality.
-    // If controls or other features are added, they would be initialized here.
+    // Carousel is handled by CSS animations
 }
 
 function initializeCalendar() {
-    const tourData = {
-        'C&C': { name: 'Tasting Table Experience', days: [2, 4, 6], time: '6:00 PM - 9:00 PM', capacity: 10, color: 'var(--calendar-event-c-and-c)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
-        'KCH': { name: 'The Timeless Tour', days: [3, 5], time: '6:00 PM - 9:00 PM', capacity: 10, color: 'var(--calendar-event-kch)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
-        'H&H': { name: 'Hops & Hemp Experience', days: [0], time: '2:00 PM - 5:00 PM', capacity: 10, color: 'var(--calendar-event-h-and-h)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
-        'C&S': { name: 'PRIVATE GROUP TOUR', days: [6], time: '8:00 PM - 11:00 PM', capacity: 10, color: 'var(--calendar-event-c-and-s)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
-        'PVT': { name: 'Private Group Tour', days: [], time: 'Flexible', capacity: 'Varies', color: 'var(--calendar-event-pvt)', url: 'mailto:hello@elevatedadventureskc.com' } 
+    const tourTypes = {
+        'HLT': { name: 'Holiday Lights Tour', color: '#E5A00D', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
+        'PVT-B': { name: 'Private Tour (Booked)', color: '#6c757d' },
+        'C&C': { name: 'Tasting Table Experience', days: [2, 4, 6], time: '6:00 PM - 9:00 PM', color: 'var(--calendar-event-c-and-c)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
+        'KCH': { name: 'The Timeless Tour', days: [3, 5], time: '6:00 PM - 9:00 PM', color: 'var(--calendar-event-kch)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
+        'H&H': { name: 'Hops & Hemp Experience', days: [0], time: '2:00 PM - 5:00 PM', color: 'var(--calendar-event-h-and-h)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
+        'C&S': { name: 'PRIVATE GROUP TOUR', days: [6], time: '8:00 PM - 11:00 PM', color: 'var(--calendar-event-c-and-s)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
+        'PVT': { name: 'Private Group Tour', time: 'Flexible', color: 'var(--calendar-event-pvt)', url: 'mailto:hello@elevatedadventureskc.com' }
     };
 
-    let currentDate = new Date(2026, 0, 1); // Start in January 2026
+    const specificEvents = {
+        "2025-12-06": [
+            { tourKey: 'HLT', time: '6:00 PM' },
+            { tourKey: 'HLT', time: '8:00 PM' }
+        ],
+        "2025-12-13": [
+            { tourKey: 'PVT-B', time: '6:00 PM' },
+            { tourKey: 'HLT', time: '8:00 PM' }
+        ],
+        "2025-12-20": [
+            { tourKey: 'HLT', time: '6:00 PM' },
+            { tourKey: 'HLT', time: '8:00 PM' }
+        ]
+    };
+
+    let currentDate = new Date(2025, 11, 1); // Start in December 2025
 
     const monthYearDisplay = document.getElementById('month-year-display');
     const calendarGrid = document.querySelector('.calendar-grid');
@@ -53,9 +69,31 @@ function initializeCalendar() {
     const nextMonthBtn = document.getElementById('next-month-btn');
     const legendContainer = document.getElementById('tour-legend-container');
 
+    function getEventsForDay(year, month, day) {
+        const events = [];
+        const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+        if (specificEvents[dateString]) {
+            events.push(...specificEvents[dateString]);
+        }
+
+        if (year === 2026 && month === 0) { // January 2026
+            const dayOfWeek = new Date(year, month, day).getDay();
+            for (const tourKey in tourTypes) {
+                const tour = tourTypes[tourKey];
+                if (tour.days && tour.days.includes(dayOfWeek)) {
+                    events.push({ tourKey: tourKey, time: tour.time.split(' ')[0] });
+                }
+            }
+        }
+        return events;
+    }
+
     function renderCalendar() {
+        const month = currentDate.getMonth();
+        const year = currentDate.getFullYear();
+
         calendarGrid.innerHTML = '';
-        // Add day names header again for when grid is cleared
         const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         dayNames.forEach(day => {
             const dayNameCell = document.createElement('div');
@@ -64,67 +102,60 @@ function initializeCalendar() {
             calendarGrid.appendChild(dayNameCell);
         });
 
-        const month = currentDate.getMonth();
-        const year = currentDate.getFullYear();
-
         monthYearDisplay.textContent = `${currentDate.toLocaleString('default', { month: 'long' })} ${year}`;
 
         const firstDayOfMonth = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
-        
-        // Adjust for Monday start
         const dayOffset = (firstDayOfMonth === 0) ? 6 : firstDayOfMonth - 1;
 
         for (let i = 0; i < dayOffset; i++) {
-            const emptyCell = document.createElement('div');
-            emptyCell.classList.add('calendar-day', 'other-month');
-            calendarGrid.appendChild(emptyCell);
+            calendarGrid.appendChild(document.createElement('div')).classList.add('calendar-day', 'other-month');
         }
 
         for (let i = 1; i <= daysInMonth; i++) {
             const dayCell = document.createElement('div');
             dayCell.classList.add('calendar-day');
+            dayCell.innerHTML = `<div class="day-number">${i}</div>`;
 
-            const dayNumber = document.createElement('div');
-            dayNumber.classList.add('day-number');
-            dayNumber.textContent = i;
-            dayCell.appendChild(dayNumber);
-
-            const dayOfWeek = new Date(year, month, i).getDay();
-
-            for (const tourKey in tourData) {
-                const tour = tourData[tourKey];
-                if (tour.days.includes(dayOfWeek)) {
+            const dayEvents = getEventsForDay(year, month, i);
+            if (dayEvents.length > 0) {
+                dayEvents.forEach(eventData => {
+                    const tour = tourTypes[eventData.tourKey];
                     const eventElement = document.createElement('div');
-                    eventElement.classList.add('event', tourKey.replace('&','-and-'));
-                    eventElement.textContent = tourKey;
+                    eventElement.classList.add('event');
                     eventElement.style.backgroundColor = tour.color;
-                    eventElement.addEventListener('click', () => {
-                        window.open(tour.url, '_blank');
-                    });
+                    eventElement.textContent = `${eventData.tourKey.replace('-B','')} @ ${eventData.time}`;
+
+                    if (eventData.tourKey.includes('-B')) {
+                        eventElement.classList.add('booked');
+                    } else {
+                        eventElement.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            window.open(tour.url, '_blank');
+                        });
+                    }
                     dayCell.appendChild(eventElement);
-                }
+                });
             }
             calendarGrid.appendChild(dayCell);
         }
+        updateNavButtons();
+    }
+
+    function updateNavButtons() {
+        const month = currentDate.getMonth();
+        const year = currentDate.getFullYear();
+        prevMonthBtn.disabled = (year === 2025 && month === 11);
+        nextMonthBtn.disabled = (year === 2026 && month === 0);
     }
 
     function renderLegend() {
         legendContainer.innerHTML = '<h3>Tour Calendar Legend</h3>';
-        for (const tourKey in tourData) {
-            const tour = tourData[tourKey];
+        for (const tourKey in tourTypes) {
+            const tour = tourTypes[tourKey];
             const legendItem = document.createElement('div');
             legendItem.classList.add('legend-item');
-
-            const colorBox = document.createElement('div');
-            colorBox.classList.add('legend-color-box');
-            colorBox.style.backgroundColor = tour.color;
-
-            const legendText = document.createElement('span');
-            legendText.textContent = `${tourKey}: ${tour.name} (${tour.time})`;
-
-            legendItem.appendChild(colorBox);
-            legendItem.appendChild(legendText);
+            legendItem.innerHTML = `<div class="legend-color-box" style="background-color: ${tour.color};"></div><span>${tour.name}</span>`;
             legendContainer.appendChild(legendItem);
         }
     }
@@ -142,4 +173,3 @@ function initializeCalendar() {
     renderCalendar();
     renderLegend();
 }
-
