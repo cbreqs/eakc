@@ -13,6 +13,13 @@
     --lush-cannabis-green: #5CB85C;
     --clean-off-white: #F4F4F4;
     --pristine-white: #FFFFFF;
+    --calendar-day-bg: #2a523d; 
+    --calendar-day-hover-bg: #3e6a53;
+    --calendar-event-c-and-c: #ffcc00; /* C&C */
+    --calendar-event-kch: #00ccff; /* KCH */
+    --calendar-event-h-and-h: #00ff66; /* H&H */
+    --calendar-event-c-and-s: #ff6699; /* C&S */
+    --calendar-event-pvt: #cc99ff; /* PVT */
 }
 
 body {
@@ -147,7 +154,7 @@ header nav a:hover {
     }
 }
 
-/* Tours Section */
+/* Tours Section & Calendar */
 #tours {
     padding: 4rem 5%;
     background-color: var(--sophisticated-charcoal);
@@ -158,43 +165,113 @@ header nav a:hover {
     margin-bottom: 2rem;
 }
 
-.tour-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.tour-card {
+.calendar-container {
+    max-width: 1200px;
+    margin: 0 auto;
     background-color: var(--deep-forest-green);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
 }
 
-.tour-card:hover {
-    transform: translateY(-10px);
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
 }
 
-.tour-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.tour-details {
-    padding: 1.5rem;
-}
-
-.tour-details h3 {
+#prev-month-btn, #next-month-btn {
+    background: none;
+    border: none;
     color: var(--warm-golden-amber);
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
-.tour-details p {
+#month-year-display {
+    color: var(--pristine-white);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day-name {
+    text-align: center;
+    font-weight: 700;
     color: var(--clean-off-white);
     margin-bottom: 1rem;
 }
+
+.calendar-day {
+    background-color: var(--calendar-day-bg);
+    min-height: 120px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-day.other-month {
+    background-color: var(--sophisticated-charcoal);
+    opacity: 0.5;
+}
+
+.calendar-day:hover {
+    background-color: var(--calendar-day-hover-bg);
+}
+
+.day-number {
+    font-weight: 700;
+    color: var(--clean-off-white);
+    margin-bottom: 5px;
+}
+
+.event {
+    padding: 3px 5px;
+    margin-bottom: 3px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    color: var(--deep-forest-green);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.event:hover {
+    opacity: 0.8;
+}
+
+.event.C-and-C { background-color: var(--calendar-event-c-and-c); }
+.event.KCH { background-color: var(--calendar-event-kch); }
+.event.H-and-H { background-color: var(--calendar-event-h-and-h); }
+.event.C-and-S { background-color: var(--calendar-event-c-and-s); }
+.event.PVT { background-color: var(--calendar-event-pvt); }
+
+/* Tour Legend */
+#tour-legend-container {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    background-color: var(--deep-forest-green);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.legend-color-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
 
 
 /* Signup Form Section */
