@@ -24,7 +24,6 @@ function initializeRaffleForm() {
             return;
         }
 
-        // Dummy success message. Replace with actual form submission logic (e.g., to Firebase)
         formMessage.textContent = 'Thank you for signing up! You have been entered into the raffle.';
         formMessage.style.color = 'var(--lush-cannabis-green)';
         form.reset();
@@ -36,28 +35,32 @@ function initializeCarousel() {
 }
 
 function initializeCalendar() {
+    const hlt6pmLink = 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator';
+    const hlt8pmLink = 'https://www.eventbrite.com/e/holiday-light-tours-tickets-1971505966417?aff=oddtdtcreator';
+    const placeholderUrl = '#tours';
+
     const tourTypes = {
-        'HLT': { name: 'Holiday Lights Tour', color: '#E5A00D', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
+        'HLT': { name: 'Holiday Lights Tour', color: '#E5A00D', url: placeholderUrl },
         'PVT-B': { name: 'Private Tour (Booked)', color: '#6c757d' },
-        'C&C': { name: 'Tasting Table Experience', days: [2, 4, 6], time: '6:00 PM - 9:00 PM', color: 'var(--calendar-event-c-and-c)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
-        'KCH': { name: 'The Timeless Tour', days: [3, 5], time: '6:00 PM - 9:00 PM', color: 'var(--calendar-event-kch)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
-        'H&H': { name: 'Hops & Hemp Experience', days: [0], time: '2:00 PM - 5:00 PM', color: 'var(--calendar-event-h-and-h)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
-        'C&S': { name: 'PRIVATE GROUP TOUR', days: [6], time: '8:00 PM - 11:00 PM', color: 'var(--calendar-event-c-and-s)', url: 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator' },
+        'C&C': { name: 'Tasting Table Experience', days: [2, 4, 6], time: '6:00 PM - 9:00 PM', color: 'var(--calendar-event-c-and-c)', url: placeholderUrl },
+        'KCH': { name: 'The Timeless Tour', days: [3, 5], time: '6:00 PM - 9:00 PM', color: 'var(--calendar-event-kch)', url: placeholderUrl },
+        'H&H': { name: 'Hops & Hemp Experience', days: [0], time: '2:00 PM - 5:00 PM', color: 'var(--calendar-event-h-and-h)', url: placeholderUrl },
+        'C&S': { name: 'PRIVATE GROUP TOUR', days: [6], time: '8:00 PM - 11:00 PM', color: 'var(--calendar-event-c-and-s)', url: placeholderUrl },
         'PVT': { name: 'Private Group Tour', time: 'Flexible', color: 'var(--calendar-event-pvt)', url: 'mailto:hello@elevatedadventureskc.com' }
     };
 
     const specificEvents = {
         "2025-12-06": [
-            { tourKey: 'HLT', time: '6:00 PM' },
-            { tourKey: 'HLT', time: '8:00 PM' }
+            { tourKey: 'HLT', time: '6:00 PM', url: hlt6pmLink },
+            { tourKey: 'HLT', time: '8:00 PM', url: hlt8pmLink }
         ],
         "2025-12-13": [
             { tourKey: 'PVT-B', time: '6:00 PM' },
-            { tourKey: 'HLT', time: '8:00 PM' }
+            { tourKey: 'HLT', time: '8:00 PM', url: placeholderUrl }
         ],
         "2025-12-20": [
-            { tourKey: 'HLT', time: '6:00 PM' },
-            { tourKey: 'HLT', time: '8:00 PM' }
+            { tourKey: 'HLT', time: '6:00 PM', url: placeholderUrl },
+            { tourKey: 'HLT', time: '8:00 PM', url: placeholderUrl }
         ]
     };
 
@@ -82,7 +85,7 @@ function initializeCalendar() {
             for (const tourKey in tourTypes) {
                 const tour = tourTypes[tourKey];
                 if (tour.days && tour.days.includes(dayOfWeek)) {
-                    events.push({ tourKey: tourKey, time: tour.time.split(' ')[0] });
+                    events.push({ tourKey: tourKey, time: tour.time.split(' ')[0], url: tour.url });
                 }
             }
         }
@@ -129,9 +132,14 @@ function initializeCalendar() {
                     if (eventData.tourKey.includes('-B')) {
                         eventElement.classList.add('booked');
                     } else {
+                        const eventUrl = eventData.url || tour.url;
                         eventElement.addEventListener('click', (e) => {
                             e.stopPropagation();
-                            window.open(tour.url, '_blank');
+                            if (eventUrl.startsWith('http')) {
+                                window.open(eventUrl, '_blank');
+                            } else {
+                                window.location.href = eventUrl;
+                            }
                         });
                     }
                     dayCell.appendChild(eventElement);
