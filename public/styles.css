@@ -549,6 +549,189 @@ header nav a:hover {
     margin-top: 2rem;
 }
 
+
+/* Featured Tours Section */
+.featured-tours-section {
+    padding: 4rem 5%;
+    background-color: var(--sophisticated-charcoal);
+}
+
+.featured-tours-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.featured-tours-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-tour-card {
+    background-color: var(--deep-forest-green);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-tour-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.featured-tour-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.featured-tour-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.featured-tour-card h3 {
+    color: var(--warm-golden-amber);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+/* Tour Detail Pages */
+.tour-detail-body {
+    background-color: var(--deep-forest-green);
+    padding: 0 5% 4rem 5%;
+}
+
+.tour-sub-nav {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--warm-golden-amber);
+    margin-bottom: 2rem;
+}
+
+.tour-sub-nav a {
+    color: var(--clean-off-white);
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tour-sub-nav a:hover {
+    background-color: var(--warm-golden-amber);
+    color: var(--deep-forest-green);
+}
+
+.tour-sub-nav a.active {
+    background-color: var(--warm-golden-amber);
+    color: var(--deep-forest-green);
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+}
+
+.tour-detail-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows sidebar to wrap on smaller screens */
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+.tour-prose {
+    flex: 3; /* Give more space to the text */
+    min-width: 300px; /* Prevent it from getting too squished */
+    color: var(--clean-off-white); /* White text for readability */
+}
+
+.tour-prose p {
+    margin-bottom: 1.5rem;
+}
+
+.tour-highlights-sidebar {
+    flex: 1; /* Take up less space */
+    min-width: 250px;
+    background-color: var(--calendar-day-bg); /* Use a slightly lighter green */
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.tour-highlights-sidebar h3 {
+    color: var(--warm-golden-amber);
+    margin-bottom: 1.5rem;
+}
+
+.tour-highlights-sidebar ul {
+    list-style: none;
+}
+
+.tour-highlights-sidebar li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.tour-highlights-sidebar i {
+    color: var(--warm-golden-amber); /* Make icons stand out */
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+.tour-highlights-sidebar a {
+    text-decoration: none;
+    color: var(--clean-off-white); /* Readable link text */
+    transition: color 0.3s ease;
+}
+
+.tour-highlights-sidebar a:hover {
+    color: var(--warm-golden-amber); /* Highlight on hover */
+}
+
+.booking-body {
+    background-color: var(--deep-forest-green);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.booking-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.booking-container h1 {
+    margin-bottom: 2rem;
+}
+
+.booking-form {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--sophisticated-charcoal);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.booking-note {
+    margin-top: 1.5rem;
+    color: var(--clean-off-white);
+    font-size: 0.9rem;
+}
+
+
+
 /* Footer Styles (basic) */
 footer {
     background-color: var(--deep-forest-green);
@@ -672,5 +855,19 @@ footer a:hover {
 
     .legend-item span {
         font-size: 0.9rem;
+    }
+
+    .featured-tours-container {
+        grid-template-columns: 1fr;
+    }
+
+    .tour-detail-container {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .tour-prose, .tour-highlights-sidebar {
+        min-width: unset;
+        width: 100%;
     }
 }

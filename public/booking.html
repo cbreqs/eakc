@@ -1,16 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Elevated Adventures</title>
+    <meta name="description" content="Book your Elevated Adventures KC tour. Choose from our unique Kansas City cannabis experiences and a representative will contact you to finalize your booking.">
+    <title>Book Your Tour | Elevated Adventures KC</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
 </head>
-<body>
+<body class="booking-body">
     <header>
         <div class="logo-container">
             <a href="/">
@@ -29,19 +32,16 @@
             <a href="/tours.html">Tours</a>
             <a href="/education.html">Education</a>
             <a href="/contact.html">Contact</a>
-            <a href="https://eventhi.io/events/holiday-light-tour-13307" class="cta-button" target="_blank">Book a Tour</a>
+            <a href="https://eventhi.io/events/holiday-light-tour-13307" class="cta-button">Book a Tour</a>
         </nav>
     </header>
 
-    <main>
-        <section class="education-section">
-            <div class="education-content">
-                <h2>Our Mission: Redefining Tourism in Kansas City</h2>
-                <p>Welcome to Elevated Adventures! We are your guide to a higher perspective on Kansas City, offering safe, sophisticated, and educational cannabis-themed tour experiences. Explore the city's culture, from world-renowned barbecue to top-tier cannabis dispensaries, with our expert guides. We are redefining tourism in Kansas City, one adventure at a time.</p>
-                <a href="/education.html" class="cta-button">Learn More</a>
-            </div>
-        </section>
-
+    <main class="booking-container">
+        <h1>Book Your Tour</h1>
+        <div class="booking-form">
+            <a href="https://eventhi.io/events/holiday-light-tour-13307" class="submit-button" style="text-align: center; text-decoration: none;">Go to EventHi to Book</a>
+        </div>
+        <p class="booking-note">You will be redirected to our trusted partner, EventHi, to securely book your tour.</p>
     </main>
 
     <footer>
@@ -50,6 +50,7 @@
 
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
     <script src="/client.js"></script>
 </body>
 </html>

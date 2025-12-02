@@ -29,7 +29,7 @@
             <a href="/tours.html">Tours</a>
             <a href="/education.html">Education</a>
             <a href="/contact.html">Contact</a>
-            <a href="/tours.html" class="cta-button" target="_blank">Book a Tour</a>
+            <a href="https://eventhi.io/events/holiday-light-tour-13307" class="cta-button" target="_blank">Book a Tour</a>
         </nav>
     </header>
 
@@ -43,11 +43,57 @@
             </div>
         </section>
 
-        <section class="education-section">
-            <div class="education-content">
-                <h2>Our Mission: Redefining Tourism in Kansas City</h2>
-                <p>Welcome to Elevated Adventures! We are your guide to a higher perspective on Kansas City, offering safe, sophisticated, and educational cannabis-themed tour experiences. Explore the city's culture, from world-renowned barbecue to top-tier cannabis dispensaries, with our expert guides. We are redefining tourism in Kansas City, one adventure at a time.</p>
-                <a href="/education.html" class="cta-button">Learn More</a>
+        <section id="signup-form-section" class="signup-form-section">
+            <div class="form-card">
+                <h2>elevate your KC experience: join our mailing list!</h2>
+                <p>Become part of the Elevated Adventures community! Get exclusive tour insights, cannabis education, and join us for unique KC experiences.</p>
+
+                <form id="raffle-signup-form">
+                    <div class="form-group">
+                        <label for="fullName">Your Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="newsletter" name="newsletter" checked>
+                        <label for="newsletter">Yes, I'd like to receive email updates from Elevated Adventures!</label>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="age-21-check" name="age21" required>
+                        <label for="age-21-check">I certify that I am 21 years of age or older.</label>
+                    </div>
+
+                    
+                    <button type="submit" class="button submit-button">Join Our Community!</button>
+                    <div id="form-message" class="form-message"></div>
+                </form>
+
+                <div class="community-promo">
+                    <h3>Join Our Community!</h3>
+                    <div class="social-icons">
+                        <a href="https://instagram.com/ElevatedAdventuresKC" target="_blank">
+                        <img src="/assets/instagram-gold.png" alt="Instagram" class="social-icon">
+                        </a>
+                        <a href="https://facebook.com/ElevatedAdventuresKC" target="_blank">
+                        <img src="/assets/facebook-gold.png" alt="Facebook" class="social-icon">
+                        </a>
+                    </div>
+                    <p>@ElevatedAdventuresKC</p>
+                </div>
+            </div>
+            <div class="legal-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms & Conditions</a>
+                <a href="#disclaimer">Cannabis Disclaimer</a>
             </div>
         </section>
 
@@ -59,7 +105,6 @@
 
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-    
-    
+    <script src="client.js"></script>
 </body>
 </html>

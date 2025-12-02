@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tours | Elevated Adventures</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
@@ -26,14 +26,38 @@
             <span></span>
         </button>
         <nav id="main-nav">
-            <a href="tours.html">Tours</a>
-            <a href="education.html">Education</a>
-            <a href="contact.html">Contact</a>
-            <a href="tours/booking.html" class="cta-button" target="_blank">Book a Tour</a>
+            <a href="/tours.html">Tours</a>
+            <a href="/education.html">Education</a>
+            <a href="/contact.html">Contact</a>
+            <a href="https://eventhi.io/events/holiday-light-tour-13307" class="cta-button" target="_blank">Book a Tour</a>
         </nav>
     </header>
 
     <main>
+        <section class="featured-tours-section">
+            <h2>Featured Tours</h2>
+            <div class="featured-tours-container">
+                <div class="featured-tour-card">
+                    <a href="/tours/hops-and-hemp-experience.html">
+                        <img src="/assets/hops-and-hemp-experience/hops-and-hemp-1.png" alt="Hops & Hemp Experience">
+                        <h3>Hops & Hemp Experience</h3>
+                    </a>
+                </div>
+                <div class="featured-tour-card">
+                    <a href="/tours/taste-of-kansas-city.html">
+                        <img src="/assets/taste-of-kansas-city-tour/taste-of-kansas-city-1.png" alt="Taste of Kansas City Tour">
+                        <h3>Taste of Kansas City Tour</h3>
+                    </a>
+                </div>
+                <div class="featured-tour-card">
+                    <a href="/tours/timeless-tour.html">
+                        <img src="/assets/timeless-tour/timeless-tour-1.png" alt="Timeless Tour">
+                        <h3>Timeless Tour</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <section id="tours">
             <h2>Tour Calendar</h2>
             <div class="calendar-container">
@@ -64,6 +88,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     
-    <script src="client.js"></script>
+    <script src="/client.js"></script>
 </body>
 </html>
