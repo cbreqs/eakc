@@ -2,7 +2,20 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeRaffleForm();
     initializeCarousel();
     initializeCalendar();
+    initializeHamburgerMenu();
 });
+
+function initializeHamburgerMenu() {
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const mainNav = document.getElementById('main-nav');
+
+    if (hamburgerMenu && mainNav) {
+        hamburgerMenu.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            hamburgerMenu.classList.toggle('active');
+        });
+    }
+}
 
 function initializeRaffleForm() {
     const form = document.getElementById('raffle-signup-form');

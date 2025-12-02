@@ -61,6 +61,12 @@ header {
     align-items: center;
 }
 
+.logo-container a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
 .brand-logo {
     height: 50px; /* Adjust as needed */
     margin-right: 15px;
@@ -73,8 +79,8 @@ header {
 
 .brand-name {
     font-family: 'Roboto Slab', serif; /* Or your specific logo font */
-    font-weight: 900;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 1rem;
     color: var(--pristine-white);
 }
 
@@ -112,6 +118,24 @@ header nav a:hover {
 .cta-button:hover, .submit-button:hover {
     background-color: #c9931b; /* Example darker amber */
 }
+
+.hamburger-menu {
+    display: none; /* Hidden by default */
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--pristine-white);
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
 
 
 /* Hero Section */
@@ -549,37 +573,55 @@ footer a:hover {
     h3 { font-size: 22px; }
 
     header {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row; /* Revert to row for hamburger menu layout */
+        justify-content: space-between;
         padding: 1rem;
     }
 
     .logo-container {
-        flex-direction: column;
+        flex-direction: row; /* Ensure logo and text are in a row */
         align-items: center;
-        text-align: center;
-        margin-bottom: 1rem;
+        text-align: left;
+        margin-bottom: 0;
     }
 
     .brand-logo {
-        margin-right: 0;
-        margin-bottom: 10px;
+        margin-right: 10px;
+        margin-bottom: 0;
     }
 
-    header nav {
-        margin-top: 0;
-        display: flex;
+    .brand-text {
+        display: none; /* Hide brand text on mobile */
+    }
+
+    .hamburger-menu {
+        display: block; /* Show hamburger menu */
+    }
+
+    nav#main-nav {
+        display: none; /* Hide nav links by default */
+        position: absolute;
+        top: 70px; /* Position below header */
+        left: 0;
+        width: 100%;
+        background-color: var(--deep-forest-green);
         flex-direction: column;
         align-items: center;
-        width: 100%;
+        padding: 1rem 0;
+    }
+
+    nav#main-nav.active {
+        display: flex; /* Show on active */
     }
 
     header nav a {
-        margin: 0.5rem 0;
+        margin: 1rem 0;
+        font-size: 1.2rem;
     }
 
     .cta-button {
         margin: 1rem 0 0 0;
+        font-size: 1.2rem;
     }
 
     .hero-section {
