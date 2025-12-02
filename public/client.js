@@ -48,6 +48,16 @@ function initializeCarousel() {
 }
 
 function initializeCalendar() {
+    const calendarGrid = document.querySelector('.calendar-grid');
+    const monthYearDisplay = document.getElementById('month-year-display');
+    const prevMonthBtn = document.getElementById('prev-month-btn');
+    const nextMonthBtn = document.getElementById('next-month-btn');
+    const legendContainer = document.getElementById('tour-legend-container');
+
+    if (!calendarGrid || !monthYearDisplay || !prevMonthBtn || !nextMonthBtn || !legendContainer) {
+        return;
+    }
+
     const hlt6pmLink = 'https://www.eventbrite.com/e/holiday-light-tour-tickets-1971504759808?aff=oddtdtcreator';
     const hlt8pmLink = 'https://www.eventbrite.com/e/holiday-light-tours-tickets-1971505966417?aff=oddtdtcreator';
     const placeholderUrl = '#tours';
@@ -78,12 +88,6 @@ function initializeCalendar() {
     };
 
     let currentDate = new Date(2025, 11, 1); // Start in December 2025
-
-    const monthYearDisplay = document.getElementById('month-year-display');
-    const calendarGrid = document.querySelector('.calendar-grid');
-    const prevMonthBtn = document.getElementById('prev-month-btn');
-    const nextMonthBtn = document.getElementById('next-month-btn');
-    const legendContainer = document.getElementById('tour-legend-container');
 
     function getEventsForDay(year, month, day) {
         const events = [];
@@ -140,7 +144,8 @@ function initializeCalendar() {
                     const eventElement = document.createElement('div');
                     eventElement.classList.add('event');
                     eventElement.style.backgroundColor = tour.color;
-                    eventElement.textContent = `${eventData.tourKey.replace('-B','')} @ ${eventData.time}`;
+                    eventElement.textContent = `${eventData.tourKey.replace('-B','')
+} @ ${eventData.time}`;
 
                     if (eventData.tourKey.includes('-B')) {
                         eventElement.classList.add('booked');

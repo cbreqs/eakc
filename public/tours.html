@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elevated Adventures | Higher Perspectives</title>
+    <title>Tours | Elevated Adventures</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,23 +34,27 @@
     </header>
 
     <main>
-        <section id="hero" class="hero-section">
-            <div class="hero-carousel">
-                <div class="hero-slide" style="background-image: url('/assets/holiday-tours.png');"></div>
-                <div class="hero-slide" style="background-image: url('/assets/january-launch.png');"></div>
-                <div class="hero-slide" style="background-image: url('/assets/holiday-lights.png');"></div>
-                <div class="hero-slide" style="background-image: url('/assets/january-launch.png');"></div>
+        <section id="tours">
+            <h2>Tour Calendar</h2>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prev-month-btn">&lt;</button>
+                    <h3 id="month-year-display"></h3>
+                    <button id="next-month-btn">&gt;</button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day-name">Monday</div>
+                    <div class="calendar-day-name">Tuesday</div>
+                    <div class="calendar-day-name">Wednesday</div>
+                    <div class="calendar-day-name">Thursday</div>
+                    <div class="calendar-day-name">Friday</div>
+                    <div class="calendar-day-name">Saturday</div>
+                    <div class="calendar-day-name">Sunday</div>
+                    <!-- Calendar days will be dynamically inserted here -->
+                </div>
             </div>
+            <div id="tour-legend-container"></div>
         </section>
-
-        <section class="education-section">
-            <div class="education-content">
-                <h2>Our Mission: Redefining Tourism in Kansas City</h2>
-                <p>Welcome to Elevated Adventures! We are your guide to a higher perspective on Kansas City, offering safe, sophisticated, and educational cannabis-themed tour experiences. Explore the city's culture, from world-renowned barbecue to top-tier cannabis dispensaries, with our expert guides. We are redefining tourism in Kansas City, one adventure at a time.</p>
-                <a href="/education.html" class="cta-button">Learn More</a>
-            </div>
-        </section>
-
     </main>
 
     <footer>
@@ -60,6 +64,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     
-    
+    <script src="client.js"></script>
 </body>
 </html>

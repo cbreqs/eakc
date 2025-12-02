@@ -112,6 +112,7 @@ header nav a:hover {
     font-size: 17px;
     cursor: pointer;
     margin-left: 20px;
+    white-space: nowrap;
     transition: background-color 0.3s ease;
 }
 
